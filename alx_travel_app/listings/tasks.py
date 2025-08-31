@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 @shared_task
-def send_booking_confirmation_email(booking_id, user_email, user_name, listing_title, check_in_date, check_out_date, total_price):
+def send_booking_confirmation_email(booking_id, user_email, user_name, listing_title, check_in_date, check_out_date):
     """
     Send booking confirmation email asynchronously
     """
@@ -20,7 +20,6 @@ def send_booking_confirmation_email(booking_id, user_email, user_name, listing_t
         'check_in_date': check_in_date,
         'check_out_date': check_out_date,
         'booking_id': booking_id,
-        'total_price': total_price,
     })
     
     plain_message = strip_tags(html_message)
